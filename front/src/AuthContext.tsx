@@ -15,7 +15,7 @@ export function AuthProvider({children} : {children: React.ReactNode}) {
     const [username, setUsername] = useState('')
 
     async function Login(data: any) {
-        const response = await post<{auth: boolean, username: string, type: string, token: string}, any>('https://dmsmecanica.com/api/login', data).then(res => res).catch(() => {
+        const response = await post<{auth: boolean, username: string, token: string}, any>('http://localhost:3001/login', data).then(res => res).catch(() => {
             console.error('Usuário ou Senha incorretos.')
         })
         setAuth(response.token)

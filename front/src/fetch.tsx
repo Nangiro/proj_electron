@@ -36,6 +36,12 @@ export async function get<TResponse>(path: string, config?: RequestInit): Promis
     return ((await request(path, init)).json().catch(() => ({})))
 }
 
+export async function getWithNotCORS<TResponse>(path: string, config?: RequestInit): Promise<TResponse>{
+    let init = { method: 'GET', ...config}
+
+    return ((await request(path, init)).json().catch(() => ({})))
+}
+
 export async function post<TRequest, TResponse>(path: string, body?: TRequest, config?: RequestInit): Promise<TResponse>{
     let init = { method: 'POST', ...config}
     const jwt = window.localStorage.getItem('jwt')
@@ -71,5 +77,22 @@ export async function post<TRequest, TResponse>(path: string, body?: TRequest, c
                 }
             }
     }
+    return ((await request(path, init)).json().catch(() => ({})))
+}
+
+export async function del<TResponse>(path: string, config?: RequestInit): Promise<TResponse>{
+    let init = { method: 'DELETE', ...config}
+    const jwt = window.localStorage.getItem('jwt')
+
+    if(jwt)
+    init = {
+        ...init,
+        headers: {
+            Accept: 'application/json',
+            'Content-type': 'application/json',
+            'x-acess-token' : jwt
+        }
+    }
+
     return ((await request(path, init)).json().catch(() => ({})))
 }

@@ -3,7 +3,7 @@ import Routes from "./Routes"
 
 function App() {
   return (
-      <div className='w-screen h-screen  bg-[#1D2B53]'>
+      <div className='w-screen h-screen  bg-[#1D2B53] overflow-auto'>
         {/* <LoginScreen/> */}
         {/* <AddUser/> */}
         <AuthProvider>

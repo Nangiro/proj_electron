@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
-import { useCEP } from "../api";
+import { useAddUser, useCEP } from "../api";
 import { useNavigate } from "react-router-dom";
 
 export default function AddUser () {
@@ -10,6 +10,7 @@ export default function AddUser () {
     const [cep, setCep] = useState("")
 
     const getCep = useCEP(cep, cep != "")
+    const addUser = useAddUser()
 
     const { register, handleSubmit, formState: { isValid }, resetField, setValue } = useForm({
         defaultValues: {
@@ -26,7 +27,10 @@ export default function AddUser () {
     const [cepAux, setCepAux] = useState("")
 
     const onSubmit = (data: any) => {
-        console.log(data)
+        data.numero = Number(data.numero)
+        addUser.mutate(data, {
+            onSuccess: () => navigate("/users")
+        })
     }
     
     useEffect(() => {

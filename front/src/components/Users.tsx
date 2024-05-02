@@ -4,12 +4,15 @@ import { XSquare } from "react-feather"
 import { Button } from "./Buttons/Button"
 import { useNavigate } from "react-router-dom"
 import { useAuth } from "../AuthContext"
+import { useDeleteuser, useGetUsuarios } from "../api"
 
 export default function Users() {
 
     const { Logout } = useAuth()
     const navigate = useNavigate()
     const [textFilter, setTextFilter] = useState<any>('')
+    const users = useGetUsuarios().data || []
+    const deleteUser = useDeleteuser()
 
     const columns = useMemo<ColumnDef<any>[]>(() => [
                 {
@@ -57,7 +60,7 @@ export default function Users() {
                             <button 
                                 className="bg-transparent hover:border-0 focus:border-0 active:border-0 focus:text-[#FF004D]/60 hover:text-[#FF004D]/40 active:text-[#FF004D]/80"
                                 onClick={() => {
-                                    // deleteProduto.mutate(row.row.original.id)
+                                    deleteUser.mutate(row.row.original.id)
                                 }}
                             >
                                 <XSquare/>
@@ -68,14 +71,14 @@ export default function Users() {
             ], [])
 
     const table = useReactTable({
-        data: [],
+        data: users,
         columns,
         state: {
             globalFilter: textFilter
         },
         initialState:{
             pagination: {
-                pageSize: 1000
+                pageSize: 15
             }
         },
         getCoreRowModel: getCoreRowModel(),
@@ -89,12 +92,12 @@ export default function Users() {
     })
 
     return (
-        <div className="w-full h-full flex flex-col justify-center items-center p-20 gap-4">
+        <div className="w-full h-full flex flex-col justify-center items-center p-20 gap-4 overflow-auto">
             <div className="flex gap-4 w-full justify-between items-end">
                 <Button label="Sair" className="h-9 w-40 flex justify-center items-center" onClick={Logout}/>
                 <Button label="Criar Usuário" className="h-9 w-40 flex justify-center items-center" onClick={() => navigate("/AddUser")}/>
             </div>
-            <table className="text-white text-center w-full overflowy-y-hidden p-10 bg-white/10">
+            <table className="text-white text-center w-full p-10 bg-white/10">
                 <thead>
                     {table.getHeaderGroups().map((headerGroup) => (
                         <tr key={headerGroup.id} >
