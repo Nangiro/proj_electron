@@ -68,14 +68,14 @@ export default function AddUser () {
                         <div className={`w-full flex flex-col text-white gap-1`}>
                             <span>Usuário</span>
                             <input 
-                                className="rounded-lg border-2 border-black w-full h-9 text-black p-2"
+                                className="rounded-lg border-2 border-black w-full h-9 text-black p-2 bg-white"
                                 {...register("username", {required: true})}
                             />
                         </div>
                         <div className={`w-full flex flex-col text-white gap-1`}>
                             <span>Senha</span>
                             <input 
-                                className="rounded-lg border-2 border-black w-full h-9 text-black p-2"
+                                className="rounded-lg border-2 border-black w-full h-9 text-black p-2 bg-white"
                                 {...register("password", {required: true})}
                             />
                         </div>
@@ -84,7 +84,7 @@ export default function AddUser () {
                         <div className={`w-full flex flex-col text-white gap-1`}>
                             <span>Cep</span>
                             <input 
-                                className="rounded-lg border-2 border-black w-full h-9 text-black p-2"
+                                className="rounded-lg border-2 border-black w-full h-9 text-black p-2 bg-white"
                                 value={cepAux}
                                 onChange={(ev) => setCepAux(ev.target.value)}
                             />
@@ -127,7 +127,7 @@ export default function AddUser () {
                         <div className={`w-full flex flex-col text-white gap-1`}>
                             <span>Número</span>
                             <input 
-                                className="rounded-lg border-2 border-black w-full h-9 text-black p-2"
+                                className="rounded-lg border-2 border-black w-full h-9 text-black p-2 bg-white"
                                 {...register("numero", {required: true})}
                                 type="number"
                             />
