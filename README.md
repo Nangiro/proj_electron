@@ -40,3 +40,17 @@ cd release/0.0.0/
 ```
 
 Isso irá compilar o aplicativo Electron e iniciar a aplicação desktop. Ele se conectará aos serviços fornecidos pelo servidor em execução com Docker Compose.
+
+## Testes
+Vá para a raiz do projeto e execute os comandos a seguir
+```bash
+cd backend
+npm run test
+```
+
+Serão realizados os seguintes testes:
+- Rota de login com usuário válido.
+- Rota de login com usuario invalido.
+- Rota de usuario sem token.
+- Rota de usuario com token válido.
+- Rota de usuário com token invalido.
