@@ -22,7 +22,7 @@ Este é um projeto que combina a tecnologia Electron.js para a parte do cliente 
 Certifique-se de que o Docker esteja em execução e, em seguida, execute o seguinte comando para iniciar o servidor com Docker Compose:
 ```bash
 cd backend
-docker-compose up -d
+docker compose up -d
 ```
 
 Isso iniciará os serviços definidos no arquivo `docker-compose.yml`, como banco de dados, servidor API, etc.
@@ -32,8 +32,11 @@ Isso iniciará os serviços definidos no arquivo `docker-compose.yml`, como banc
 Após iniciar o servidor com Docker Compose, abra um novo terminal e navegue até o diretório do projeto. Em seguida, execute o seguinte comando para construir e executar o aplicativo Electron:
 
 ```bash
-cd ../frontend
-npm run electron:build
+cd ..
+cd front
+npm install
+npm run build
+cd release/0.0.0/
 ```
 
 Isso irá compilar o aplicativo Electron e iniciar a aplicação desktop. Ele se conectará aos serviços fornecidos pelo servidor em execução com Docker Compose.
