@@ -54,3 +54,7 @@ Serão realizados os seguintes testes:
 - Rota de usuario sem token.
 - Rota de usuario com token válido.
 - Rota de usuário com token invalido.
+
+## Usuario e senha para acesso
+Usuario: Daniel
+Senha: 1234
