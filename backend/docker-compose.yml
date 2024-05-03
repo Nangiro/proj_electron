@@ -1,0 +1,12 @@
+version: "3"
+services:
+  nodejs_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: my_backend
+    restart: always
+    volumes:
+      - ./database.db:/usr/src/app/database.db
+    ports:
+      - "3001:3001" # Adjust the port mapping as per your application's requirements
